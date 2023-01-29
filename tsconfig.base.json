@@ -1,0 +1,10 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDirs": ["apps", "libs"],
+    "paths": {
+      "backend/modules/shared": ["libs/backend/modules/shared/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
