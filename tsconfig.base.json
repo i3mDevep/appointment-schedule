@@ -3,7 +3,8 @@
   "compilerOptions": {
     "rootDirs": ["apps", "libs"],
     "paths": {
-      "backend/modules/shared": ["libs/backend/modules/shared/src/index.ts"]
+      "backend/context/shared": ["libs/backend/context/shared/src/index.ts"],
+      "backend/modules/customer": ["libs/backend/modules/customer/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

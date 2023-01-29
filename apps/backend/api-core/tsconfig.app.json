@@ -19,7 +19,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "backend/modules/*": ["../../../libs/backend/modules/*/src"]
+      "backend/modules/*": ["../../../libs/backend/modules/*/src"],
+      "backend/context/*": ["../../../libs/backend/context/*/src"]
     }
   }
 }

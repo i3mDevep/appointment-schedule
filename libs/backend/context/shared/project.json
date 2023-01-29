@@ -1,21 +1,21 @@
 {
-  "name": "backend-modules-shared",
+  "name": "backend-context-shared",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/backend/modules/shared/src",
+  "sourceRoot": "libs/backend/context/shared/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/backend/modules/shared/**/*.ts"]
+        "lintFilePatterns": ["libs/backend/context/shared/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/backend/modules/shared/jest.config.ts",
+        "jestConfig": "libs/backend/context/shared/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
