@@ -24,6 +24,28 @@
         }
       }
     },
+
+    "build-testing": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/backend/api-core",
+        "main": "apps/backend/api-core/src/main.ts",
+        "tsConfig": "apps/backend/api-core/tsconfig.app.json",
+        "assets": ["apps/backend/api-core/src/assets"],
+        "webpackConfig": "apps/backend/api-core/webpack.config.js",
+        "inspect": true,
+        "optimization": false,
+        "additionalEntryPoints": [
+          {
+            "entryName": "features/step_definitions",
+            "entryPath": "./apps/backend/api-core/features/index.ts"
+          }
+        ]
+      }
+    },
     "serve": {
       "executor": "@nrwl/js:node",
       "options": {
@@ -43,7 +65,8 @@
       }
     },
     "test": {
-      "command": "cd apps/backend/api-core && cucumber-js --publish default"
+      "command": "cd dist/apps/backend/api-core && cucumber-js --publish default",
+      "dependsOn": ["build-testing"]
     }
   },
   "tags": []

@@ -1,8 +1,17 @@
-const { composePlugins, withNx } = require('@nrwl/webpack');
+const { composePlugins, withNx, createCopyPlugin } = require('@nrwl/webpack');
+const { merge } = require('webpack-merge');
 
-// Nx plugins for webpack.
 module.exports = composePlugins(withNx(), (config) => {
-  // Update the webpack config as needed here.
-  // e.g. `config.plugins.push(new MyPlugin())`
-  return config;
+  return merge(config, {
+    plugins: [
+      new createCopyPlugin([{
+        glob: './apps/backend/api-core/features/tests',
+        output: 'features'
+      }, {
+        glob: './apps/backend/api-core/cucumber.js',
+        output: ''
+      }])
+    ]
+  });
 });
+

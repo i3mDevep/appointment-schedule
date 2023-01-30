@@ -1,10 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
-import { CustomerGetListApplication } from '../../application';
+import { CustomerFindAllApplication } from '../../application';
 
 @Controller('customer')
 export class CustomerController {
   constructor(
-    private readonly getListApplication: CustomerGetListApplication
+    private readonly getListApplication: CustomerFindAllApplication
   ) {}
 
   @Get()

@@ -6,8 +6,7 @@
     "emitDecoratorMetadata": true,
     "allowJs": true,
     "paths": {
-      "backend/context/shared": ["../../context/shared/src"],
-      "backend/modules/shared": ["../../modules/shared/src"]
+      "backend/context/shared": ["../../context/shared/src"]
     }
   },
   "files": [],

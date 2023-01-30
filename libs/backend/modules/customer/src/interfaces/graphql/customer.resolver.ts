@@ -1,10 +1,10 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { CustomerModel } from './customer.model';
-import { CustomerGetListApplication } from '../../application';
+import { CustomerFindAllApplication } from '../../application';
 
 @Resolver()
 export class AuthorsResolver {
-  constructor(private getListApplication: CustomerGetListApplication) {}
+  constructor(private getListApplication: CustomerFindAllApplication) {}
 
   @Query(() => [CustomerModel])
   async customers() {

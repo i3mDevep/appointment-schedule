@@ -1,12 +1,14 @@
-import { AggregateRoot, Uuid } from 'backend/context/shared';
+import { AggregateRoot } from 'backend/context/shared';
+import { AppointmentId, CustomerId } from 'backend/modules/shared';
+
 import { Email } from './email';
 import { FullName } from './fullName';
 import { SessionId } from './sessionId';
 
 export interface CustomerProps {
-  readonly id: Uuid;
+  readonly id: CustomerId;
   readonly sessionId: SessionId;
-  readonly appointmentId: string;
+  readonly appointmentId: AppointmentId;
   readonly fullName: FullName;
   readonly email: Email;
 }
@@ -23,9 +25,9 @@ export class Customer
   extends AggregateRoot<CustomerPrimitives>
   implements CustomerProps
 {
-  id: Uuid;
+  id: CustomerId;
   sessionId: SessionId;
-  appointmentId: string;
+  appointmentId: AppointmentId;
   fullName: FullName;
   email: Email;
 
@@ -38,7 +40,7 @@ export class Customer
     return {
       id: this.id.value,
       fullName: this.fullName.value,
-      appointmentId: this.appointmentId,
+      appointmentId: this.appointmentId.value,
       email: this.email.value,
       sessionId: this.sessionId.value,
     };
@@ -46,8 +48,8 @@ export class Customer
 
   static fromPrimitives(primitives: CustomerPrimitives) {
     return new Customer({
-      id: new Uuid(primitives.id),
-      appointmentId: primitives.appointmentId,
+      id: new CustomerId(primitives.id),
+      appointmentId: new AppointmentId(primitives.appointmentId),
       email: new Email(primitives.email),
       fullName: new FullName(primitives.fullName),
       sessionId: new SessionId(primitives.sessionId),

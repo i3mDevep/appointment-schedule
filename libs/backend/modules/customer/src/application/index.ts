@@ -1,1 +1,1 @@
-export * from './customer-get-list.application';
+export * from './find-all.application';
