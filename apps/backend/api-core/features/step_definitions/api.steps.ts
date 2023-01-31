@@ -7,8 +7,6 @@ let _request: request.Test;
 let _response: request.Response;
 
 Given('I send a GET request to {string}', (route: string) => {
-  console.log('🚀 ~ file: api.steps.ts:11 ~ Given ~ route', route);
-
   _request = request(application.app.getHttpServer()).get(route);
 });
 
