@@ -7,8 +7,8 @@ export class CustomerController {
     private readonly getListApplication: CustomerFindAllApplication
   ) {}
 
-  @Get()
-  getData() {
-    return this.getListApplication.customerRepository.getList();
-  }
+  // @Get()
+  // getData() {
+  //   return this.getListApplication.customerRepository.getList('lives');
+  // }
 }

@@ -1,13 +1,14 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { CustomerModel } from './customer.model';
-import { CustomerFindAllApplication } from '../../application';
+import { FindAllCustomerQuery } from '../../application';
+import { QueryBus } from '@nestjs/cqrs';
 
 @Resolver()
-export class AuthorsResolver {
-  constructor(private getListApplication: CustomerFindAllApplication) {}
+export class CustomerResolver {
+  constructor(private queryBus: QueryBus) {}
 
   @Query(() => [CustomerModel])
   async customers() {
-    return this.getListApplication.customerRepository.getList();
+    return this.queryBus.execute(new FindAllCustomerQuery('toy'));
   }
 }
