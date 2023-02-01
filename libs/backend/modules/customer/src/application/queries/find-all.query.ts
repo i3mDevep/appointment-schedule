@@ -2,14 +2,9 @@ import { IQuery } from '@nestjs/cqrs';
 import { CustomerPrimitives } from '../../domain';
 
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { AccountId } from 'backend/modules/shared';
 import { CustomerCreateApplication } from '../create.application';
 
-export class FindAllCustomerQuery
-  implements Pick<CustomerPrimitives, 'accountId'>, IQuery
-{
-  constructor(public readonly accountId: string) {}
-}
+export class FindAllCustomerQuery implements IQuery {}
 
 @QueryHandler(FindAllCustomerQuery)
 export class FindAllCustomerHandler
@@ -17,10 +12,9 @@ export class FindAllCustomerHandler
 {
   constructor(private repository: CustomerCreateApplication) {}
 
-  async execute(query: FindAllCustomerQuery): Promise<CustomerPrimitives[]> {
-    const { accountId } = query;
+  async execute(): Promise<CustomerPrimitives[]> {
     return this.repository.customerRepository
-      .getList(new AccountId(accountId))
+      .getList()
       .map((customer) => customer.toPrimitives());
   }
 }

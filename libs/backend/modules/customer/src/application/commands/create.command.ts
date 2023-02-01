@@ -6,7 +6,6 @@ import { CustomerPrimitives, Customer } from '../../domain';
 export class CreateCustomerCommand implements CustomerPrimitives, ICommand {
   constructor(
     public readonly id: string,
-    public readonly accountId: string,
     public readonly sessionId: string,
     public readonly appointmentId: string,
     public readonly fullName: string,

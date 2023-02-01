@@ -1,3 +1,4 @@
-export * from './appointment-id';
-export * from './customer-id';
-export * from './account-id';
+export * from './appointment';
+export * from './moderator';
+export * from './customer';
+export * from './account';

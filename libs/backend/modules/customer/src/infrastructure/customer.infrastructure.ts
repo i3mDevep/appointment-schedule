@@ -14,7 +14,6 @@ export class CustomerInfrastructure implements CustomerRepository {
     return [
       Customer.fromPrimitives({
         id: '2a3ad682-a00d-11ed-a8fc-0242ac120002',
-        accountId: 'livestreamingdemo',
         fullName: 'Michael Steven',
         sessionId: '102',
         appointmentId: '2',
@@ -22,7 +21,6 @@ export class CustomerInfrastructure implements CustomerRepository {
       }),
       Customer.fromPrimitives({
         id: '2a3ad682-a00d-11ed-a8fc-0242ac120003',
-        accountId: 'livestreamingdemo',
         fullName: 'Mary Eugenia',
         sessionId: '332',
         appointmentId: '2',

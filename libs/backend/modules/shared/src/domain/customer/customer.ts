@@ -1,14 +1,11 @@
-import { AggregateRoot } from 'backend/context/shared';
-import { AppointmentId, CustomerId } from 'backend/modules/shared';
-
+import { CustomerId } from './id';
 import { Email } from './email';
-import { FullName } from './fullName';
-import { SessionId } from './sessionId';
+import { FullName } from './full-name';
+import { SessionId } from './session-id';
 
 export interface CustomerProps {
   readonly id: CustomerId;
   readonly sessionId: SessionId;
-  readonly appointmentId: AppointmentId;
   readonly fullName: FullName;
   readonly email: Email;
 }
@@ -16,23 +13,17 @@ export interface CustomerProps {
 export interface CustomerPrimitives {
   id: string;
   sessionId: string;
-  appointmentId: string;
   fullName: string;
   email: string;
 }
 
-export class Customer
-  extends AggregateRoot<CustomerPrimitives>
-  implements CustomerProps
-{
+export class Customer implements CustomerProps {
   id: CustomerId;
   sessionId: SessionId;
-  appointmentId: AppointmentId;
   fullName: FullName;
   email: Email;
 
   constructor(props: CustomerProps) {
-    super();
     Object.assign(this, props);
   }
 
@@ -40,7 +31,6 @@ export class Customer
     return {
       id: this.id.value,
       fullName: this.fullName.value,
-      appointmentId: this.appointmentId.value,
       email: this.email.value,
       sessionId: this.sessionId.value,
     };
@@ -49,7 +39,6 @@ export class Customer
   static fromPrimitives(primitives: CustomerPrimitives) {
     return new Customer({
       id: new CustomerId(primitives.id),
-      appointmentId: new AppointmentId(primitives.appointmentId),
       email: new Email(primitives.email),
       fullName: new FullName(primitives.fullName),
       sessionId: new SessionId(primitives.sessionId),

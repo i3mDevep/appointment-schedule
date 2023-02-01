@@ -9,6 +9,6 @@ export class CustomerResolver {
 
   @Query(() => [CustomerModel])
   async customers() {
-    return this.queryBus.execute(new FindAllCustomerQuery('toy'));
+    return this.queryBus.execute(new FindAllCustomerQuery());
   }
 }
