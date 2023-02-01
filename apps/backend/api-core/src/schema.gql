@@ -9,17 +9,12 @@ type CustomerType {
   sessionId: String!
 }
 
-type CustomerModel {
-  id: String!
-  fullName: String!
-}
-
 type AppointmentModel {
   id: String!
   moderatorId: String!
   customer: CustomerType!
   accountId: String!
-  status: String!
+  status: Int!
   dateCreated: DateTime!
   dateUpdate: DateTime
   dateMeeting: DateTime!
@@ -32,6 +27,5 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Query {
-  appointments: [AppointmentModel!]!
-  customers: [CustomerModel!]!
+  appointments(accountId: String!): [AppointmentModel!]!
 }

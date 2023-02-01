@@ -6,7 +6,7 @@ Feature: Graphql appointment
         Given I send a query
             """
             query {
-            appointments {
+            appointments(accountId: "livesttreamingdemo") {
             id
             accountId
             moderatorId
@@ -18,9 +18,9 @@ Feature: Graphql appointment
             sessionId
             }
             dateCreated
-            dateUpdate
             dateMeeting
             dateFinish
+            dateUpdate
             }
             }
             """

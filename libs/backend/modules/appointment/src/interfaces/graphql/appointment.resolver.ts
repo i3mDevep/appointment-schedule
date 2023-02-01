@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { QueryBus } from '@nestjs/cqrs';
 
 import { FindAllAppointmentQuery } from '../../application';
@@ -9,9 +9,7 @@ export class AppointmentResolver {
   constructor(private queryBus: QueryBus) {}
 
   @Query(() => [AppointmentModel])
-  async appointments() {
-    return this.queryBus.execute(
-      new FindAllAppointmentQuery('account-example')
-    );
+  async appointments(@Args('accountId') accountId?: string) {
+    return this.queryBus.execute(new FindAllAppointmentQuery(accountId));
   }
 }

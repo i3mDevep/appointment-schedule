@@ -1,4 +1,4 @@
-import { Field, ObjectType, GraphQLISODateTime } from '@nestjs/graphql';
+import { Field, ObjectType, GraphQLISODateTime, Int } from '@nestjs/graphql';
 import { CustomerType } from 'backend/modules/shared';
 import { AppointmentPrimitives } from '../../domain';
 
@@ -16,8 +16,8 @@ export class AppointmentModel implements AppointmentPrimitives {
   @Field()
   accountId: string;
 
-  @Field()
-  status: string;
+  @Field(() => Int)
+  status: number;
 
   @Field(() => GraphQLISODateTime)
   dateCreated: Date;
