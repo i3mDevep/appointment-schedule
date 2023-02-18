@@ -12,7 +12,7 @@ export class CreateAppointmentCommand
     public readonly accountId: string,
     public readonly moderatorId: string,
     public readonly customer: CustomerPrimitives,
-    public readonly status: number,
+    public readonly status: string,
     public readonly dateCreated: Date,
     public readonly dateMeeting: Date,
     public readonly dateUpdate?: Date,

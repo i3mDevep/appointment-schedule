@@ -14,7 +14,7 @@ type AppointmentModel {
   moderatorId: String!
   customer: CustomerType!
   accountId: String!
-  status: Int!
+  status: String!
   dateCreated: DateTime!
   dateUpdate: DateTime
   dateMeeting: DateTime!

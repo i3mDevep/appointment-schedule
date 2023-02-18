@@ -26,7 +26,7 @@ export interface AppointmentPrimitives {
   accountId: string;
   moderatorId: string;
   customer: CustomerPrimitives;
-  status: number;
+  status: string;
   dateCreated: Date;
   dateUpdate?: Date;
   dateMeeting: Date;

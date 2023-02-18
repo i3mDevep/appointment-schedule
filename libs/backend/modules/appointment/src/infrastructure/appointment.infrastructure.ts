@@ -14,7 +14,7 @@ export class AppointmentInfrastructure implements AppointmentRepository {
         id: '2a3ad682-a00d-11ed-a8fc-0242ac120004',
         accountId: 'livestreamingdemo',
         moderatorId: '2a3ad682-a00d-11ed-a8fc-0242ac120003',
-        status: 0,
+        status: 'IN_MEETING',
         customer: {
           id: '2a3ad682-a00d-11ed-a8fc-0242ac120002',
           sessionId: 'MacBook',
