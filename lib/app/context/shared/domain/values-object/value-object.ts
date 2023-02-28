@@ -17,4 +17,8 @@ export abstract class ValueObject<
   protected validate(): void {
     schemaValidator(this.schema, this.props);
   }
+
+  get props_() {
+    return this.props;
+  }
 }

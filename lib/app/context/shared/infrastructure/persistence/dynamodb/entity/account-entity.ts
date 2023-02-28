@@ -1,8 +1,9 @@
 import { Entity } from "dynamodb-toolbox";
+import { APPOINTMENT_KEYS } from "../keys/keys-table";
 import { appointmentScheduleTable } from "../table/appointment-schedule-table";
 
-export enum ACCOUNT_KEY {
-  ACCOUNT = "ACC",
+interface ItemDependsOnAccount {
+  name: string;
 }
 
 export const AccountEntity = new Entity({
@@ -12,13 +13,15 @@ export const AccountEntity = new Entity({
       partitionKey: true,
       hidden: true,
       dependsOn: ["name"],
-      default: ({ name }: { name: string }) => `${ACCOUNT_KEY.ACCOUNT}#${name}`,
+      default: ({ name }: ItemDependsOnAccount) =>
+        `${APPOINTMENT_KEYS.ACCOUNT}#${name}`,
     },
     SK: {
       sortKey: true,
       hidden: true,
       dependsOn: ["name"],
-      default: ({ name }: { name: string }) => `${ACCOUNT_KEY.ACCOUNT}#${name}`,
+      default: ({ name }: ItemDependsOnAccount) =>
+        `${APPOINTMENT_KEYS.ACCOUNT}#${name}`,
     },
     name: { type: "string", required: true },
     active: { type: "boolean", default: true },

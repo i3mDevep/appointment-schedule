@@ -1,12 +1,15 @@
 import { AccountId } from "../../../../shared/domain/account/account-id";
+import { AccountNotExist } from "../../../../shared/domain/account/account-not-exist.error";
 import { AccountEntity } from "../../../../shared/infrastructure/persistence/dynamodb/entity/account-entity";
+import { accountGet } from "../../../../shared/infrastructure/persistence/dynamodb/query/account-get";
 import { AccountRepository } from "../../domain/account.repository";
-import { Account, AccountProps } from "../../domain/account.root";
+import { Account } from "../../domain/account.root";
 
 export class DynamodbAccountInfrastructure implements AccountRepository {
   async get(accountId: AccountId): Promise<Account> {
-    const response = await AccountEntity.get({ name: accountId.value });
-    return Account.toDomain(response.Item as AccountProps);
+    const { accountItem } = await accountGet(accountId);
+    if (!accountItem) throw new AccountNotExist(accountId.toString());
+    return Account.toDomain(accountItem);
   }
 
   async create(account: Account): Promise<void> {
