@@ -62,6 +62,10 @@ export abstract class Entity<T, I extends UuidBase = UuidBase> {
     this._updated = this.getISOString();
   }
 
+  public get propsPure(): T {
+    return this.props;
+  }
+
   protected validate(schema: Record<string, any>): void {
     schemaValidator(schema, this.props);
   }

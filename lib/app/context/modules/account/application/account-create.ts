@@ -1,9 +1,10 @@
 import { AccountRepository } from "../domain/account.repository";
-import { Account, AccountPrimitives } from "../domain/account.root";
+import { Account, AccountProps } from "../domain/account.root";
 
 export function accountCreateApplication(repository: AccountRepository) {
-  return async (props: AccountPrimitives) => {
+  return async (props: AccountProps) => {
     const instance = Account.create(props);
     await repository.create(instance);
+    return instance;
   };
 }

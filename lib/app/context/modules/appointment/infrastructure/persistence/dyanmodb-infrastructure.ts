@@ -1,12 +1,11 @@
-import { LocalPersistence } from "../../../../shared/infrastructure/persistence/local-infrastructure";
 import { AppointmentRepository } from "../../domain/appointment.repository";
-import { AppointmentProps } from "../../domain/appointment.root";
+import { Appointment } from "../../domain/appointment.root";
 
-export class AppointmentDynamodb
-  extends LocalPersistence<AppointmentProps>
-  implements AppointmentRepository
-{
-  constructor() {
-    super("appointment");
+export class AppointmentDynamodb implements AppointmentRepository {
+  async create(instance: Appointment): Promise<void> {
+    // await Account.get({ name: "active" });
+  }
+  findByAccount(account: string): Promise<Appointment[]> {
+    throw new Error("Method not implemented.");
   }
 }

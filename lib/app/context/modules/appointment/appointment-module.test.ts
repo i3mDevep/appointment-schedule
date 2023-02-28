@@ -32,4 +32,8 @@ describe("appointment-module with injection", () => {
     // const account = Account.create(accountFake);
     // expect(account.id.value).toBe(accountFake.name);
   });
+
+  // test("should get account created", () => {
+
+  // })
 });

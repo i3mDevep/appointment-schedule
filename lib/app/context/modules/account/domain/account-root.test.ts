@@ -1,6 +1,6 @@
-import { Account, AccountPrimitives } from "./account.root";
+import { Account, AccountProps } from "./account.root";
 
-const accountFake: AccountPrimitives = {
+const accountFake: AccountProps = {
   name: "livestreaming",
 };
 describe("account-domain", () => {
