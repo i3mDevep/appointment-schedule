@@ -1,7 +1,7 @@
 import { AccountId } from "../../../../shared/domain/account/account-id";
 import { AccountNotExist } from "../../../../shared/domain/account/account-not-exist.error";
 import { AccountEntity } from "../../../../shared/infrastructure/persistence/dynamodb/entity/account-entity";
-import { accountGet } from "../../../../shared/infrastructure/persistence/dynamodb/query/account-get";
+import { accountGet } from "../../../../shared/infrastructure/persistence/dynamodb/pattern-access/account-get";
 import { AccountRepository } from "../../domain/account.repository";
 import { Account } from "../../domain/account.root";
 

@@ -40,6 +40,13 @@ describe("appointment-module with injection", () => {
       .catch(() => null);
   });
 
+  test("should to get the appointments with account", () => {
+    appointmentModule
+      .getWithAccount("exito")
+      .then((appointment) => console.log(appointment))
+      .catch(() => null);
+  });
+
   // test("should get account created", () => {
 
   // })

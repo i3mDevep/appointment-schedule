@@ -10,7 +10,7 @@ export type accountGetType = {
 export async function accountGet(
   accountId: AccountId
 ): Promise<accountGetType> {
-  const response = await AccountEntity.get({ name: accountId.value });
+  const response = await AccountEntity.get({ name: accountId.toString() });
   const accountItem = response.Item as AccountFacet;
   return { accountItem, existAccount: !!accountItem };
 }

@@ -20,7 +20,7 @@ export class Account extends AggregateRoot<AccountProps> {
     return instance;
   }
 
-  static toDomain(props: AccountProps) {
+  static toDomain(props: AccountProps): Account {
     return new Account(props);
   }
 

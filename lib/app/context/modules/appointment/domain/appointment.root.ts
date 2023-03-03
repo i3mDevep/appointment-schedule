@@ -12,7 +12,7 @@ import {
   AppointmentStatus,
   AppointmentStatusOptions,
 } from "./appointment-status.vo";
-import { AppointmentId } from "./appointment-id.vo";
+import { AppointmentId } from "../../../shared/domain/appointment/appointment-id";
 
 export interface AppointmentProps extends Omit<PrimitivesBase, "id"> {
   id?: AppointmentId;
@@ -53,14 +53,14 @@ export class Appointment extends AggregateRoot<AppointmentProps> {
     return instance;
   }
 
-  static toDomain(props: AppointmentPrimitives): Appointment {
+  static toDomain(primitives: AppointmentPrimitives): Appointment {
     return new Appointment({
-      ...props,
-      id: props.id ? new AppointmentId(props.id) : undefined,
-      accountId: new AccountId(props.accountId),
-      moderator: new ModeratorId(props.moderator),
-      customer: new AppointmentCustomer({ ...props.customer }),
-      status: new AppointmentStatus({ value: props.status }),
+      ...primitives,
+      id: primitives.id ? new AppointmentId(primitives.id) : undefined,
+      accountId: new AccountId(primitives.accountId),
+      moderator: new ModeratorId(primitives.moderator),
+      customer: new AppointmentCustomer({ ...primitives.customer }),
+      status: new AppointmentStatus({ value: primitives.status }),
     });
   }
 
@@ -70,7 +70,7 @@ export class Appointment extends AggregateRoot<AppointmentProps> {
       account: this.props.accountId.value,
       status: this.props.status.props_.value,
       moderator: this.props.moderator.value,
-      dateMeet: this.props.dateMeeting,
+      dateMeeting: this.props.dateMeeting,
       customer: this.props.customer.toDto(),
     };
   }

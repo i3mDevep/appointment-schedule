@@ -1,12 +1,9 @@
 import { AccountId } from "../../../shared/domain/account/account-id";
-import { AppointmentId } from "../domain/appointment-id.vo";
+import { AppointmentId } from "../../../shared/domain/appointment/appointment-id";
 import { AppointmentRepository } from "../domain/appointment.repository";
 
-export function appointmentGetApplication(repository: AppointmentRepository) {
-  return async (appointmentId: string, accountId: string) => {
-    return repository.get(
-      new AppointmentId(appointmentId),
-      new AccountId(accountId)
-    );
+export function appointmentGetApplication(op: AppointmentRepository) {
+  return (appointmentId: string, accountId: string) => {
+    return op.get(new AppointmentId(appointmentId), new AccountId(accountId));
   };
 }

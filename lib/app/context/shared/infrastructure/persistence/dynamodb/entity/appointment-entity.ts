@@ -29,7 +29,7 @@ export const AppointmentEntity = new Entity({
     account: { type: "string", required: true },
     moderator: { type: "string", required: true },
     status: { type: "string", required: true },
-    dateMeet: { type: "string", required: true },
+    dateMeeting: { type: "string", required: true },
     dateFinish: { type: "string", default: null },
     customer: { type: "map" },
     GSI1PK: {
