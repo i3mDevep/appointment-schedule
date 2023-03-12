@@ -9,7 +9,7 @@ const createAppointment: AppointmentPrimitivesCreate = {
     nps: { comment: "hi", points: 3 },
     sessionId: "12",
   },
-  moderator: "1",
+  moderator: "01GNNA1J0070PQCQ80DYF9S9YK",
   dateMeeting: new Date().toISOString(),
 };
 describe("appointment-module with injection", () => {

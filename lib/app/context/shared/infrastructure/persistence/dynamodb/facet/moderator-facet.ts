@@ -1,5 +1,5 @@
-import { AppointmentEntity } from "../entity/appointment-entity";
+import { ModeratorEntity } from "../entity/moderator-entity";
 
-type AppointmentTypes = typeof AppointmentEntity["_typesOnly"];
+type ModeratorTypes = typeof ModeratorEntity["_typesOnly"];
 
-export type AppointmentFacet = Omit<AppointmentTypes["_item"], "PK" | "SK">;
+export type ModeratorFacet = Omit<ModeratorTypes["_item"], "PK" | "SK">;

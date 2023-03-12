@@ -13,6 +13,7 @@ import {
   AppointmentStatusOptions,
 } from "./appointment-status.vo";
 import { AppointmentId } from "../../../shared/domain/appointment/appointment-id";
+import { IsoDate } from "../../../shared/domain/values-object/iso-date.vo";
 
 export interface AppointmentProps extends Omit<PrimitivesBase, "id"> {
   id?: AppointmentId;
@@ -20,8 +21,8 @@ export interface AppointmentProps extends Omit<PrimitivesBase, "id"> {
   moderator: ModeratorId;
   customer: AppointmentCustomer;
   status: AppointmentStatus;
-  dateMeeting: string;
-  dateFinish?: string;
+  dateMeeting: IsoDate;
+  dateFinish?: IsoDate;
 }
 
 export interface AppointmentPrimitives extends PrimitivesBase {
@@ -61,6 +62,10 @@ export class Appointment extends AggregateRoot<AppointmentProps> {
       moderator: new ModeratorId(primitives.moderator),
       customer: new AppointmentCustomer({ ...primitives.customer }),
       status: new AppointmentStatus({ value: primitives.status }),
+      dateMeeting: IsoDate.create(primitives.dateMeeting),
+      dateFinish: primitives?.dateFinish
+        ? IsoDate.create(primitives.dateFinish)
+        : undefined,
     });
   }
 
@@ -70,7 +75,8 @@ export class Appointment extends AggregateRoot<AppointmentProps> {
       account: this.props.accountId.value,
       status: this.props.status.props_.value,
       moderator: this.props.moderator.value,
-      dateMeeting: this.props.dateMeeting,
+      dateMeeting: this.props.dateMeeting.value,
+      dateFinish: this.props.dateFinish?.value,
       customer: this.props.customer.toDto(),
     };
   }

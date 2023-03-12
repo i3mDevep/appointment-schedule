@@ -5,5 +5,5 @@ import { Moderator } from "./moderator.root";
 export interface ModeratorRepository {
   create(moderator: Moderator): Promise<void>;
   get(accountId: AccountId, moderatorId: ModeratorId): Promise<Moderator>;
-  getWithAccount(accountId: AccountId): Promise<Moderator[]>;
+  getModeratorWithAccount(accountId: AccountId): Promise<Moderator[]>;
 }

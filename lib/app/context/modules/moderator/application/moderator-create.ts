@@ -1,8 +1,8 @@
 import { ModeratorRepository } from "../domain/moderator.repository";
-import { Moderator, ModeratorProps } from "../domain/moderator.root";
+import { Moderator, ModeratorPrimitives } from "../domain/moderator.root";
 
 export function moderatorCreateApplication(repository: ModeratorRepository) {
-  return async (props: ModeratorProps) => {
+  return async (props: ModeratorPrimitives) => {
     const instance = Moderator.create(props);
     await repository.create(instance);
     return instance;

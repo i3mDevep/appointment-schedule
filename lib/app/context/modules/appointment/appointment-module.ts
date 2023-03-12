@@ -6,7 +6,7 @@ import { AppointmentDynamodb } from "./infrastructure/persistence/dyanmodb-appoi
 const persistence = new AppointmentDynamodb();
 
 export const appointmentModule = {
-  get: appointmentGetApplication(persistence),
   create: appointmentCreateApplication(persistence),
+  get: appointmentGetApplication(persistence),
   getWithAccount: appointmentWithAccountApplication(persistence),
 };

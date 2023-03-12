@@ -1,12 +1,13 @@
 import { moderatorModule } from "./moderator-module";
-import { ModeratorProps } from "./domain/moderator.root";
+import { ModeratorPrimitives } from "./domain/moderator.root";
 
-const moderatorFake: ModeratorProps = {
+const moderatorFake: ModeratorPrimitives = {
   accountId: "exito",
   email: "mayxool.11@gmail.com",
   name: "Michael Atehortua Henao",
   phone: "3206408264",
   specialties: "All",
+  schedules: [{ startTime: 10, endTime: 650 }],
 };
 describe("moderator-module testing", () => {
   beforeAll(() => {
@@ -21,6 +22,20 @@ describe("moderator-module testing", () => {
     moderatorModule
       .create({ ...moderatorFake })
       .then((account) => expect(account.id.value).toBe(moderatorFake.name))
+      .catch(() => null);
+  });
+
+  test("should to get moderator with id and account", () => {
+    moderatorModule
+      .get("01GNNA1J0070PQCQ80DYF9S9YK", "exito")
+      .then((moderator) => expect(moderator.id.value).toBe(moderatorFake.name))
+      .catch(() => null);
+  });
+
+  test("should to get moderators with account", () => {
+    moderatorModule
+      .getWithAccount("exito")
+      .then((moderator) => expect(Array.isArray(moderator)).toBe(true))
       .catch(() => null);
   });
 });

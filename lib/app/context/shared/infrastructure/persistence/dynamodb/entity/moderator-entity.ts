@@ -29,6 +29,7 @@ export const ModeratorEntity = new Entity({
     name: { type: "string", required: true },
     email: { type: "string", required: true },
     phone: { type: "string", required: true },
+    schedules: { type: "list", default: [], required: true },
     specialties: { type: "string", required: true },
   },
   table: appointmentScheduleTable,
