@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.21.0",
+    "@types/aws-lambda": "^8.10.111",
     "@types/jest": "^27.5.2",
     "@types/node": "10.17.27",
     "@types/prettier": "2.6.0",
